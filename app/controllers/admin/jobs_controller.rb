@@ -1,5 +1,5 @@
 class Admin::JobsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :index, :show]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :require_is_admin
   layout "admin"
 
@@ -31,7 +31,6 @@ class Admin::JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-
     if @job.update(job_params)
       redirect_to admin_jobs_path
     else
